@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package books;
+
+// Service definition
+service BookService {
+  // Get book by ID
+  rpc get_book (BookRequest) returns (BookResponse) {}
+  
+  // List all books
+  rpc list_books (ListBooksRequest) returns (ListBooksResponse) {}
+  
+  // Add a new book
+  rpc add_book (AddBookRequest) returns (BookResponse) {}
+  
+  // Delete a book
+  rpc delete_book (BookRequest) returns (DeleteBookResponse) {}
+}
+
+// Book message
+message Book {
+  int32 id = 1;
+  string title = 2;
+  string author = 3;
+  int32 year = 4;
+}
+
+// Request for getting a book by ID
+message BookRequest {
+  int32 id = 1;
+}
+
+// Response with book details
+message BookResponse {
+  Book book = 1;
+}
+
+// Request for listing books
+message ListBooksRequest {
+  // Empty request
+}
+
+// Response with list of books
+message ListBooksResponse {
+  repeated Book books = 1;
+}
+
+// Request for adding a book
+message AddBookRequest {
+  string title = 1;
+  string author = 2;
+  int32 year = 3;
+}
+
+// Response for delete operation
+message DeleteBookResponse {
+  bool success = 1;
+  string message = 2;
+} 
