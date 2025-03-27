@@ -46,12 +46,4 @@ async def read_root():
             }
         }
     }
-
-if __name__ == "__main__":
-    uvicorn.run(
-        "gateway.main:app",
-        host=API_HOST,
-        port=API_PORT,
-        reload=True
-    )
  
